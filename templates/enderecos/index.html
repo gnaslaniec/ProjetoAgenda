@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="{{url_for('enderecos_novo', contato_id=contato.id)}}">Cadastrar Endereço</a>
+    <h1>Endereços do contato {{contato.nome}} </h1>
+    {% for endereco in contato.enderecos %}
+        <p>
+            Rua {{endereco.rua}} N° {{endereco.numero}}, {{endereco.categoria}}<br>
+            <a href="{{url_for('enderecos_editar', contato_id=contato.id, id=endereco.id)}}">Editar Endereço</a>
+            <form method="POST" action="{{url_for('enderecos_exibir', contato_id=contato.id, id=endereco.id)}}?_method=DELETE">
+                <button>X</button>
+            </form>
+        </p>
+    {% endfor %}
+{% endblock %}

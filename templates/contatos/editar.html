@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Editar contato</h1>
+    <form method="POST" action="{{url_for('exibir', id=contato.id)}}?_method=PATCH">
+        Nome:<input type="text" name="nome" value="{{contato.nome}}"><br>
+        Data de Nascimento: <input type="text" name="data_nascimento" value="{{contato.data_nascimento}}"><br>
+        <input type="submit" value="Editar Contato">
+    </form>
+    
+{% endblock %}

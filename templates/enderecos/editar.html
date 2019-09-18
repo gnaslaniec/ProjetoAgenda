@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Editar Endereço</h1>
+    <form method="POST" action="{{url_for('enderecos_exibir', contato_id=endereco.contato_id, id=endereco.id)}}?_method=PATCH">
+        Nome:<input type="text" name="rua" value="{{endereco.rua}}"><br>
+        Número:<input type="text" name='numero', value={{endereco.numero}}><br>
+        Categoria:<input type="text" name='categoria', value={{endereco.categoria}}><br>
+        <input type="submit" value="Editar Endereço">
+    </form>
+{% endblock %}

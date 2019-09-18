@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Cadastrar Endereço</h1>
+    <form method="POST" action="{{url_for('enderecos_index', contato_id=contato.id)}}">
+        Rua:<input type="text" name='rua'><br>
+        Número:<input type="text" name='numero'><br>
+        Categoria:<input type="text" name='categoria'><br>
+        <button>Cadastrar</button>
+    </form>
+{% endblock %}
