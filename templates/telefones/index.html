@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-    <a href="{{url_for('telefones_novo', contato_id=contato.id)}}">Cadastrar Telefone</a>
+    <a href="{{url_for('telefones_novo', contato_id=contato.id)}}">Cadastrar Telefone</a><br>
+    <a href="{{url_for('index')}}">Voltar</a>
     <h1>Telefones do contato {{contato.nome}} </h1>
     {% for telefone in contato.telefones %}
         <p>
             Número: {{telefone.numero_telefone}}
             Categoria: {{telefone.categoria}}<br>
-            <a href="{{url_for('telefones_editar', contato_id=contato.id, id=telefone.id)}}">Editar Telefone</a>
+            <a href="{{url_for('telefones_editar', contato_id=contato.id, id=telefone.id)}}">Editar</a>
             <form method="POST" action="{{url_for('telefones_exibir', contato_id=contato.id, id=telefone.id)}}?_method=DELETE">
                 <button>X</button>
         </p>
