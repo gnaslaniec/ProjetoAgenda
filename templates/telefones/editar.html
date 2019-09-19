@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Editar Telefone</h1>
+    <form method="POST" action="{{url_for('telefones_exibir', contato_id=telefone.contato_id, id=telefone.id)}}?_method=PATCH">
+        Número:<input type="text" name='numero_telefone', value={{telefone.numero_telefone}}><br>
+        Categoria:<input type="text" name='categoria', value={{telefone.categoria}}><br>
+        <input type="submit" value="Editar Telefone">
+    </form>
+{% endblock %}

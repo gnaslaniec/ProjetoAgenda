@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Cadastrar Telefone</h1>
+    <form method="POST" action="{{url_for('telefones_index', contato_id=contato.id)}}">
+        Número:<input type="text" name='numero_telefone'><br>
+        Categoria:<input type="text" name='categoria'><br>
+        <button>Cadastrar</button>
+    </form>
+{% endblock %}
