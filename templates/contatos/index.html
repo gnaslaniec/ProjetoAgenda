@@ -5,7 +5,7 @@
     <h1>Todos os Contatos</h1>
     {% for contato in contatos %}
         <p>
-            Nome: {{contato.nome}}<br>Data de Nascimento: {{contato.data_nascimento}}
+            Nome: {{contato.nome}}<br>Data de Nascimento: {{contato.dia}} de {{contato.mes}} de {{contato.ano}}
             <br>
             <a href="{{url_for('enderecos_index', contato_id=contato.id)}}">Endereços</a>
             <a href="{{url_for('telefones_index', contato_id=contato.id)}}">Telefones</a>

@@ -15,6 +15,7 @@ class Contato(db.Model):
         self.nome = nome
         self.data_nascimento = data_nascimento
 
+
 class Endereco(db.Model):
     __tablename__= "enderecos"
 
