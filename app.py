@@ -49,7 +49,7 @@ class Telefone(db.Model):
     __tablename__= "telefones"
 
     id = db.Column(db.Integer, primary_key=True)
-    numero_telefone = db.Column(db.Integer)
+    numero_telefone = db.Column(db.Text)
     categoria = db.Column(db.Text)
     contato_id = db.Column(db.Integer, db.ForeignKey('contatos.id'))
 
