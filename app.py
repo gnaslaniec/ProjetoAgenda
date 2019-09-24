@@ -7,8 +7,8 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:root@localhost:3306/contatos"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JSON_AS_ASCII'] = False
-modus = Modus(app)
 
+modus = Modus(app)
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
@@ -20,8 +20,8 @@ class Contato(db.Model):
     dia = db.Column(db.Integer)
     mes = db.Column(db.Text)
     ano = db.Column(db.Integer)
-    enderecos = db.relationship('Endereco', backref="contato", lazy="dynamic")
-    telefones = db.relationship('Telefone', backref="contato", lazy="dynamic")
+    enderecos = db.relationship('Endereco', cascade="all,delete", backref="contato", lazy="dynamic")
+    telefones = db.relationship('Telefone', cascade="all,delete", backref="contato", lazy="dynamic")
 
     def __init__(self, nome, dia, mes, ano):
         self.nome = nome

@@ -1,18 +1,35 @@
-{% extends 'base.html' %}
-
-{% block content %}
-    <a href="{{url_for('novo')}}">Adicionar um novo contato</a>
-    <h1>Todos os Contatos</h1>
-    {% for contato in contatos %}
-        <p>
-            Nome: {{contato.nome}}<br>Data de Nascimento: {{contato.dia}} de {{contato.mes}} de {{contato.ano}}
-            <br>
-            <a href="{{url_for('enderecos_index', contato_id=contato.id)}}">Endereços</a>
-            <a href="{{url_for('telefones_index', contato_id=contato.id)}}">Telefones</a>
-            <a href="{{url_for('editar', id=contato.id)}}">Editar</a>
-            <form action="{{url_for('exibir', id=contato.id)}}?_method=DELETE" method="POST">
-                <input type="submit", value="X">
-            </form>
-        </p>
-    {% endfor %}
-{% endblock %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Contatos</title>
+</head>
+<body>
+    <header class="header" style="background-color: #004c8c; height:70px;"></header>
+    <div class="container">
+        <div class="title" style="text-align: center;"><h1>Todos os Contatos</h1></div>
+        {% extends 'base.html' %}
+        
+        {% block content %}
+           <button class="btn btn-secondary"><a style="color: #fff;" href="{{url_for('novo')}}">Adicionar contato</a></button>
+        
+            {% for contato in contatos %}
+                <div style="position: relative; border: 1px solid grey; border-radius: 8px; margin: 16px 0px; padding: 20px;">
+                    <form style="position: absolute; right: 0px; top: 0px;" action="{{url_for('exibir', id=contato.id)}}?_method=DELETE" method="POST">
+                       <button class="btn btn-link" type="submit">X</button> 
+                    </form>
+                    Nome: {{contato.nome}}<br>Data de Nascimento: {{contato.dia}} de {{contato.mes}} de {{contato.ano}}
+                    <br>
+                    <a style="text-decoration: underline;" href="{{url_for('enderecos_index', contato_id=contato.id)}}">Endereços</a>
+                    <a style="text-decoration: underline;" href="{{url_for('telefones_index', contato_id=contato.id)}}">Telefones</a>
+                    <a style="text-decoration: underline;" href="{{url_for('editar', id=contato.id)}}">Editar</a>
+                </div>
+            {% endfor %}
+        {% endblock %}
+    </div>
+    
+</body>
+</html>

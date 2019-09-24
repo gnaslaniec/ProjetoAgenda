@@ -1,15 +1,34 @@
-{% extends 'base.html' %}
-{% block content %}
-    <a href="{{url_for('telefones_novo', contato_id=contato.id)}}">Cadastrar Telefone</a><br>
-    <a href="{{url_for('index')}}">Voltar</a>
-    <h1>Telefones do contato {{contato.nome}} </h1>
-    {% for telefone in contato.telefones %}
-        <p>
-            Número: {{telefone.numero_telefone}}
-            Categoria: {{telefone.categoria}}<br>
-            <a href="{{url_for('telefones_editar', contato_id=contato.id, id=telefone.id)}}">Editar</a>
-            <form method="POST" action="{{url_for('telefones_exibir', contato_id=contato.id, id=telefone.id)}}?_method=DELETE">
-                <button>X</button>
-        </p>
-    {% endfor %}
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Contatos</title>
+</head>
+<body style="margin: 0px;">
+    <header class="header" style="background-color: #004c8c; height:70px;"></header>
+    <div class="container">
+        <div class="title" style="text-align: center;"><h1>Telefones do contato <strong>{{contato.nome}}</strong></h1></div>
+        
+        {% extends 'base.html' %}
+        {% block content %}
+        <div style="display:flex; justify-content: space-between;">
+            <a style="text-decoration: underline;" href="{{url_for('telefones_novo', contato_id=contato.id)}}">Cadastrar Telefone</a><br>
+            <a style="text-decoration: underline;" href="{{url_for('index')}}">Voltar</a>
+        </div>
+            {% for telefone in contato.telefones %}
+            <div style="position: relative; border: 1px solid grey; border-radius: 8px; margin: 16px 0px; padding: 20px;">
+                <form style="position: absolute; right: 0px; top: 0px;" method="POST" action="{{url_for('telefones_exibir', contato_id=contato.id, id=telefone.id)}}?_method=DELETE">
+                    <button class="btn btn-link" type="submit">X</button> 
+                </form>   
+                Número: {{telefone.numero_telefone}}<br>
+                Categoria: {{telefone.categoria}}<br>
+                <a style="text-decoration: underline;" href="{{url_for('telefones_editar', contato_id=contato.id, id=telefone.id)}}">Editar</a>
+            </div>
+            {% endfor %}
+        {% endblock %}
+    </div>
+</body>
+</html>
