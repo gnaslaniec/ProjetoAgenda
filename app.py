@@ -181,7 +181,7 @@ def getContatos():
     return contato_json.decode()
     
 
-@app.route('/contatos/api/getContatos/<int:contato_id>')
+@app.route('/contatos/api/getContatosID/<int:contato_id>')
 def getContatosID(contato_id):
     contato_schema = ContatoSchema()
     contato = Contato.query.filter_by(id=contato_id).first()
@@ -190,7 +190,7 @@ def getContatosID(contato_id):
     return contato_json.decode()
     
 
-@app.route('/contatos/api/getContatos/<string:contato_nome>')
+@app.route('/contatos/api/getContatoNome/<string:contato_nome>')
 def getContatosNome(contato_nome):
     contato_schema = ContatoSchema(many=True)
     contato = Contato.query.filter(Contato.nome.contains(contato_nome)).all()
@@ -200,7 +200,7 @@ def getContatosNome(contato_nome):
     return contato_json.decode()
 
 
-@app.route('/contatos/api/getContatos/mes/<string:contato_mes>')
+@app.route('/contatos/api/getContatosAniversario/<string:contato_mes>')
 def getContatosMes(contato_mes):
     contato_schema = ContatoSchema(many=True)
     contato = Contato.query.filter_by(mes=contato_mes).all()
