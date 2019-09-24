@@ -1,11 +1,26 @@
-{% extends 'base.html' %}
-
-{% block content %}
-    <h1>Adicionar um contato</h1>
-    <form method="POST" action="{{url_for('index')}}">
-        Nome:<input type="text" name="nome"><br>
-        Data de Nascimento: <input type="text" name="data_nascimento"><br>
-        <input type="submit" value="Cadastrar Contato">
-    </form>
-    
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Contatos</title>
+</head>
+<body style="margin: 0px;">
+    <header class="header" style="background-color: #004c8c; height:70px;"></header>
+    <div class="container">
+        <div class="title" style="text-align: center;"><h1>Adicionar um contato</h1></div>
+    {% extends 'base.html' %}
+    {% block content %}
+        <form method="POST" action="{{url_for('index')}}">
+            <div class="form-group">
+                Nome:<input class="form-control" type="text" name="nome"><br>
+                Data de Nascimento: <input class="form-control" type="text" name="data_nascimento"><br>
+                <button class="btn btn-secondary" type="submit">Cadastrar Contato</button>
+            </div>
+        </form>
+    {% endblock %}
+    </div>
+</body>
+</html>
