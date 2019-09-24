@@ -193,7 +193,8 @@ def getContatosID(contato_id):
 @app.route('/contatos/api/getContatos/<string:contato_nome>')
 def getContatosNome(contato_nome):
     contato_schema = ContatoSchema()
-    contato = Contato.query.filter_by(nome=contato_nome).first()
+    contato = Contato.query.filter(Contato.nome.contains(contato_nome)).first()
+    #contato = Contato.query.filter_by(nome=contato_nome).first()
     contato_json = contato_schema.dumps(contato, ensure_ascii=False).encode('utf8')
 
     return contato_json.decode()
